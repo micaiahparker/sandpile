@@ -1,4 +1,4 @@
-[!travis](https://travis-ci.org/micaiahparker/sandpile.svg?branch=master)
+[![Build Status](https://travis-ci.org/micaiahparker/sandpile.svg?branch=master)](https://travis-ci.org/micaiahparker/sandpile)
 
 # sandpile
 Python representation of Sandpiles as described by  Numberphile [here](https://www.youtube.com/watch?v=1MtEUErz7Gg)
