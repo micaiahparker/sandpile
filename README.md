@@ -23,13 +23,13 @@ Python representation of Sandpiles as described by  Numberphile [here](https://w
 ```
 
 ## Installation
-```git clone https://github.com/micaiahparker/sandpile
+
+```
+git clone https://github.com/micaiahparker/sandpile
 cd sandpile
 pip install .
 ```
 
-For development be sure to install `requirements-dev.txt`
-
-`pip install -e requirements-dev.txt`
+For development be sure to install `pytest`.
 
 PyPI support will be added shortly.
