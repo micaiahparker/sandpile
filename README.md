@@ -28,4 +28,8 @@ cd sandpile
 pip install .
 ```
 
+For development be sure to install `requirements-dev.txt`
+
+`pip install -e requirements-dev.txt`
+
 PyPI support will be added shortly.
