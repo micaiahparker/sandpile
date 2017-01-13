@@ -47,10 +47,16 @@ class Sandpile:
         self.check_over_flow()
 
 class MaxSandpile(Sandpile):
+    """A representation of the most sand that can be held in a pile, or:
+        3 3 3
+        3 3 3
+        3 3 3
+    """
     def __init__(self):
         super().__init__([[3 for _ in range(3)] for _ in range(3)])
 
 class SZeroSandpile(Sandpile):
+    """If a sandpile is part of Set S then addition to SZeroSandpile while result in the original pile."""
     def __init__(self):
         super().__init__([[2,1,2],[1,0,1],[2,1,2]])
 
