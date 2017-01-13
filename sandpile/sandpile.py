@@ -1,4 +1,5 @@
 from itertools import chain
+
 class Sandpile:
     def __init__(self, values=None):
         if values:
@@ -18,6 +19,9 @@ class Sandpile:
 
     def __str__(self):
         return '\n'.join([' '.join([str(col) for col in row]) for row in self.table])
+
+    def __repr__(self):
+        return self.__str__()
 
     def __add__(self, other):
         return Sandpile([[self[x][y]+other[x][y] for y in range(3)] for x in range(3)])
