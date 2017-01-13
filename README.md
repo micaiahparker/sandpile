@@ -19,3 +19,11 @@ Python representation of Sandpiles as described by  Numberphile [here](https://w
 
 
 ```
+
+## Installation
+```git clone https://github.com/micaiahparker/sandpile
+cd sandpile
+pip install .
+```
+
+PyPI support will be added shortly.

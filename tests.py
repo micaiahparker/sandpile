@@ -1,4 +1,4 @@
-from . import Sandpile, MaxSandpile, SZeroSandpile
+from sandpile import Sandpile, MaxSandpile, SZeroSandpile
 
 def test_init():
     s = Sandpile()
