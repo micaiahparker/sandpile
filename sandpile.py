@@ -1,3 +1,4 @@
+from itertools import chain
 class Sandpile:
     def __init__(self, values=None):
         if values:
@@ -13,22 +14,13 @@ class Sandpile:
         return self.table.__iter__()
 
     def __eq__(self, other):
-        for x in range(3):
-            for y in range(3):
-                if self[x][y] != other[x][y]:
-                    return False
-        return True
+        return list(chain.from_iterable(self.table)) == list(chain.from_iterable(other))
 
-    def __repr__(self):
+    def __str__(self):
         return '\n'.join([' '.join([str(col) for col in row]) for row in self.table])
 
     def __add__(self, other):
-        s = Sandpile()
-        for x in range(3):
-            for y in range(3):
-                s[x][y] = self[x][y] + other[x][y]
-        s.check_over_flow()
-        return s
+        return Sandpile([[self[x][y]+other[x][y] for y in range(3)] for x in range(3)])
 
     def check_over_flow(self):
         for i, row in enumerate(self.table):

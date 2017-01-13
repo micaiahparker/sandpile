@@ -14,10 +14,7 @@ def test_init_arg():
             assert s[x][y] == arg[x][y]
 
 def test_add():
-    s = Sandpile([[1,1,1], [1,1,1],[1,1,1]]) + Sandpile([[1,1,1], [1,1,1],[1,1,1]])
-    for x in range(3):
-        for y in range(3):
-            assert s[x][y] == 2
+    assert Sandpile([[1,1,1], [1,1,1],[1,1,1]]) + Sandpile([[1,1,1], [1,1,1],[1,1,1]]) == [[2,2,2],[2,2,2],[2,2,2]]
 
 def test_over_flow():
     s = Sandpile([[3 for _ in range(3)] for _ in range(3)])
