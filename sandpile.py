@@ -60,5 +60,6 @@ class SZeroSandpile(Sandpile):
     def __init__(self):
         super().__init__([[2,1,2],[1,0,1],[2,1,2]])
 
-def is_set_s(pile):
-    return pile + SZeroSandpile() == pile
+    @classmethod
+    def is_set_s(cls, pile):
+        return pile + cls() == pile

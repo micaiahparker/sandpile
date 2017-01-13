@@ -1,4 +1,4 @@
-from . import Sandpile, MaxSandpile
+from . import Sandpile, MaxSandpile, SZeroSandpile
 
 def test_init():
     s = Sandpile()
@@ -33,3 +33,6 @@ def test_max_pile():
 
 def test_max_over_flow():
     assert (MaxSandpile() + Sandpile([[1,3,1],[3,3,3],[1,3,1]])) == [[2,2,2],[2,2,2],[2,2,2]]
+
+def test_is_set_s():
+    assert SZeroSandpile.is_set_s(MaxSandpile())
