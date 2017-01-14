@@ -2,6 +2,13 @@ from itertools import chain
 
 class Sandpile:
     def __init__(self, rows=3, cols=3, fill=0):
+        assert fill >= 0
+        """
+        rows - height of sandpile
+        cols - width of sandpile
+        fill - contents of sandpile, can be > 3
+        to initialize a custom sandpile use Sandpile.from_list
+        """
         self.rows = rows
         self.cols = cols
         self.fill = fill
@@ -9,12 +16,32 @@ class Sandpile:
 
     @classmethod
     def from_list(cls, values):
+        """
+        Takes a 2D array of values and returns an equivalent Sandpile object
+        """
+        assert cls.is_grid(values) # make sure the values or a grid
+        assert cls.is_not_negative(values) # no negative sand allowed
         s = Sandpile()
         s.table = values
         s.rows = len(values)
         s.cols = len(values[0])
         s.check_over_flow()
         return s
+
+    @classmethod
+    def is_grid(cls, values):
+        for row in values:
+            if len(row) != len(values[0]):
+                return False
+        return True
+
+    @classmethod
+    def is_not_negative(cls, values):
+        for row in values:
+            for col in row:
+                if col < 0:
+                    return False
+        return True
 
     def __getitem__(self, x):
         return self.table[x]
