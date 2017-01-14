@@ -1,3 +1,3 @@
-from .sandpile import Sandpile, MaxSandpile, SZeroSandpile
+from .sandpile import Sandpile, MaxSandpile
 
-__all__ = ['Sandpile', 'MaxSandpile', 'SZeroSandpile']
+__all__ = ['Sandpile', 'MaxSandpile']

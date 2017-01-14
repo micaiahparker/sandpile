@@ -1,12 +1,14 @@
 from itertools import chain
 
 class Sandpile:
-    def __init__(self, values=None):
+    def __init__(self, values=None, rows=3, cols=3):
+        self.rows = rows
+        self.cols = cols
         if values:
-            self.table = [[values[x][y] for y in range(3)] for x in range(3)]
+            self.table = [[values[x][y] for y in range(self.cols)] for x in range(self.rows)]
             self.check_over_flow()
         else:
-            self.table = [[0 for _ in range(3)] for _ in range(3)]
+            self.table = [[0 for _ in range(self.cols)] for _ in range(self.rows)]
 
     def __getitem__(self, x):
         return self.table[x]
@@ -24,7 +26,7 @@ class Sandpile:
         return self.__str__()
 
     def __add__(self, other):
-        return Sandpile([[self[x][y]+other[x][y] for y in range(3)] for x in range(3)])
+        return Sandpile([[self[x][y]+other[x][y] for y in range(self.cols)] for x in range(self.rows)])
 
     def check_over_flow(self):
         for i, row in enumerate(self.table):
@@ -43,19 +45,19 @@ class Sandpile:
         self.check_over_flow()
 
 class MaxSandpile(Sandpile):
-    """A representation of the most sand that can be held in a pile, or:
+    """A representation of the most sand that can be held in a grid pile, or:
         3 3 3
         3 3 3
         3 3 3
     """
-    def __init__(self):
-        super().__init__([[3 for _ in range(3)] for _ in range(3)])
+    def __init__(self, rows=3, cols=3):
+        super().__init__([[3 for _ in range(rows)] for _ in range(cols)], rows=rows, cols=cols)
 
-class SZeroSandpile(Sandpile):
-    """If a sandpile is part of Set S then addition to SZeroSandpile while result in the original pile."""
-    def __init__(self):
-        super().__init__([[2,1,2],[1,0,1],[2,1,2]])
-
-    @classmethod
-    def is_set_s(cls, pile):
-        return pile + cls() == pile
+# class IdentitySandpile(Sandpile):
+#     """If a sandpile is part of Set S then addition to SZeroSandpile while result in the original pile."""
+#     def __init__(self):
+#         super().__init__([[2,1,2],[1,0,1],[2,1,2]])
+#
+#     @classmethod
+#     def is_set_s(cls, pile):
+#         return pile + cls() == pile
