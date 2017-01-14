@@ -8,7 +8,13 @@ Python representation of Sandpiles as described by  Numberphile [here](https://w
 ```python
 >>> from sandpile import Sandpile, MaxSandpile
 
->>> pile = Sandpile([[0, 1, 0], [1, 0, 1], [0, 1, 0]])
+>>> print(Sandpile(3, 4, fill=1))
+> 1 1 1 1
+> 1 1 1 1
+> 1 1 1 1
+
+
+>>> pile = Sandpile.from_list([[0, 1, 0], [1, 0, 1], [0, 1, 0]])
 >>> print(pile)
 > 0 1 0
 > 1 0 1
