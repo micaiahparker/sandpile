@@ -51,7 +51,7 @@ class MaxSandpile(Sandpile):
         3 3 3
     """
     def __init__(self, rows=3, cols=3):
-        super().__init__([[3 for _ in range(rows)] for _ in range(cols)], rows=rows, cols=cols)
+        super().__init__([[3 for _ in range(cols)] for _ in range(cols)], rows=rows, cols=cols)
 
 # class IdentitySandpile(Sandpile):
 #     """If a sandpile is part of Set S then addition to SZeroSandpile while result in the original pile."""
