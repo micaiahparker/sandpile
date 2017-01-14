@@ -1,17 +1,20 @@
 from itertools import chain
 
 class Sandpile:
-    def __init__(self, values=None, rows=3, cols=3, fill=0):
+    def __init__(self, rows=3, cols=3, fill=0):
         self.rows = rows
         self.cols = cols
         self.fill = fill
-        if values:
-            self.table = values
-            self.rows = len(values)
-            self.cols = len(values[0])
-            self.check_over_flow()
-        else:
-            self.table = [[fill for _ in range(self.cols)] for _ in range(self.rows)]
+        self.table = [[fill for _ in range(self.cols)] for _ in range(self.rows)]
+
+    @classmethod
+    def from_list(cls, values):
+        s = Sandpile()
+        s.table = values
+        s.rows = len(values)
+        s.cols = len(values[0])
+        s.check_over_flow()
+        return s
 
     def __getitem__(self, x):
         return self.table[x]
@@ -26,7 +29,7 @@ class Sandpile:
         return '\n'.join([' '.join([str(col) for col in row]) for row in self.table])
 
     def __add__(self, other):
-        return Sandpile([[self[x][y]+other[x][y] for y in range(self.cols)] for x in range(self.rows)], rows=self.rows, cols=self.cols)
+        return Sandpile.from_list([[self[x][y]+other[x][y] for y in range(self.cols)] for x in range(self.rows)])
 
     def check_over_flow(self):
         for i, row in enumerate(self.table):
@@ -51,7 +54,11 @@ class MaxSandpile(Sandpile):
         3 3 3
     """
     def __init__(self, rows=3, cols=3):
-        super().__init__([[3 for _ in range(cols)] for _ in range(cols)], rows=rows, cols=cols)
+        super().__init__(rows=rows, cols=cols, fill=3)
+
+    @classmethod
+    def from_list(cls, values):
+        raise BaseException("MaxSandpile doesn't work like that")
 
 # class IdentitySandpile(Sandpile):
 #     """If a sandpile is part of Set S then addition to SZeroSandpile while result in the original pile."""

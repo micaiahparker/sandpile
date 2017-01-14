@@ -8,18 +8,18 @@ def test_init():
 
 def test_init_arg():
     arg = [[1, 2, 3], [3, 2, 1], [2, 2, 2]]
-    s = Sandpile(arg)
+    s = Sandpile.from_list(arg)
     for x in range(3):
         for y in range(3):
             assert s[x][y] == arg[x][y]
 
 def test_add():
-    assert Sandpile([[1,1,1], [1,1,1],[1,1,1]]) + Sandpile([[1,1,1], [1,1,1],[1,1,1]]) == [[2,2,2],[2,2,2],[2,2,2]]
+    assert Sandpile(fill=1) + Sandpile(fill=1) == [[2,2,2], [2,2,2], [2,2,2]]
 
 def test_over_flow():
-    s = Sandpile([[3 for _ in range(3)] for _ in range(3)])
-    p = Sandpile([[0,0,0],[0,1,0],[0,0,0]])
-    assert (s + p).table == [
+    s = Sandpile.from_list([[0,0,0],[0,1,0],[0,0,0]])
+    m = MaxSandpile() # 3x3 fill=3
+    assert (s + m) == [
         [1,3,1],
         [3,0,3],
         [1,3,1]
@@ -29,7 +29,7 @@ def test_max_pile():
     assert MaxSandpile() == [[3,3,3],[3,3,3],[3,3,3]]
 
 def test_max_over_flow():
-    assert (MaxSandpile() + Sandpile([[1,3,1],[3,3,3],[1,3,1]])) == [[2,2,2],[2,2,2],[2,2,2]]
+    assert (MaxSandpile() + Sandpile.from_list([[1,3,1],[3,3,3],[1,3,1]])) == [[2,2,2],[2,2,2],[2,2,2]]
 
 def test_asymmetric_add():
     assert Sandpile(cols=4)+MaxSandpile(cols=4)
