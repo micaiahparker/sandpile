@@ -2,7 +2,8 @@ from itertools import chain
 
 class Sandpile:
     def __init__(self, rows=3, cols=3, fill=0):
-        assert fill >= 0
+        if not fill >= 0:
+            raise ValueError("Fill must be an integer >= 0")
         """
         rows - height of sandpile
         cols - width of sandpile
@@ -19,8 +20,12 @@ class Sandpile:
         """
         Takes a 2D array of values and returns an equivalent Sandpile object
         """
-        assert cls.is_grid(values) # make sure the values or a grid
-        assert cls.is_not_negative(values) # no negative sand allowed
+        if not cls.is_grid(values): # make sure the values or a grid
+            raise ValueError("'values' must be a rectangular shape")
+
+        if not cls.is_not_negative(values): # no negative sand allowed
+            raise ValueError("'values' must be positive or zero")
+
         s = Sandpile()
         s.table = values
         s.rows = len(values)

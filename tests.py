@@ -1,3 +1,4 @@
+import pytest
 from sandpile import Sandpile, MaxSandpile
 
 def test_init():
@@ -34,5 +35,17 @@ def test_max_over_flow():
 def test_asymmetric_add():
     assert Sandpile(cols=4)+MaxSandpile(cols=4)
 
+def test_non_grid_fail():
+    with pytest.raises(ValueError):
+        Sandpile.from_list([[1],[1,1],[1]])
+
+def test_neg_value_fail():
+    with pytest.raises(ValueError):
+        Sandpile(fill=-1)
+
+def test_neg_value_from_list_fail():
+    with pytest.raises(ValueError):
+        Sandpile(fill=-1)
+        Sandpile.from_list([[-1,-1],[-1,-1]])
 # def test_is_set_s():
 #     assert SZeroSandpile.is_set_s(MaxSandpile())
