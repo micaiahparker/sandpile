@@ -31,11 +31,11 @@ Python representation of Sandpiles as described by  Numberphile [here](https://w
 ## Installation
 
 ```
-git clone https://github.com/micaiahparker/sandpile
-cd sandpile
-pip install .
+pip install sandpile
 ```
 
 For development be sure to install `pytest`.
 
-PyPI support will be added shortly.
+## Requirements
+
+* Python 3.3+

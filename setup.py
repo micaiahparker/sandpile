@@ -6,5 +6,8 @@ setup(
     description="Sandpile representation in Python",
     author="Micaiah Parker",
     author_email="me@micaiahparker.com",
-    packages=["sandpile"]
+    packages=["sandpile"],
+    url="https://github.com/micaiahparker/sandpile",
+    license="LICENSE",
+    keywords=['math', 'sandpile', 'abelian']
 )
