@@ -14,7 +14,7 @@ Python representation of Sandpiles as described by  Numberphile [here](https://w
 > 1 0 1
 > 0 1 0
 
->>> pile + MaxSandpile()
+>>> print(pile + MaxSandpile())
 > 1 3 1
 > 3 3 3
 > 1 3 1

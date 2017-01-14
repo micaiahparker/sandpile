@@ -1,14 +1,17 @@
 from itertools import chain
 
 class Sandpile:
-    def __init__(self, values=None, rows=3, cols=3):
+    def __init__(self, values=None, rows=3, cols=3, fill=0):
         self.rows = rows
         self.cols = cols
+        self.fill = fill
         if values:
-            self.table = [[values[x][y] for y in range(self.cols)] for x in range(self.rows)]
+            self.table = values
+            self.rows = len(values)
+            self.cols = len(values[0])
             self.check_over_flow()
         else:
-            self.table = [[0 for _ in range(self.cols)] for _ in range(self.rows)]
+            self.table = [[fill for _ in range(self.cols)] for _ in range(self.rows)]
 
     def __getitem__(self, x):
         return self.table[x]
@@ -21,9 +24,6 @@ class Sandpile:
 
     def __str__(self):
         return '\n'.join([' '.join([str(col) for col in row]) for row in self.table])
-
-    def __repr__(self):
-        return self.__str__()
 
     def __add__(self, other):
         return Sandpile([[self[x][y]+other[x][y] for y in range(self.cols)] for x in range(self.rows)], rows=self.rows, cols=self.cols)
