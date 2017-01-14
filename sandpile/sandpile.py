@@ -26,7 +26,7 @@ class Sandpile:
         return self.__str__()
 
     def __add__(self, other):
-        return Sandpile([[self[x][y]+other[x][y] for y in range(self.cols)] for x in range(self.rows)])
+        return Sandpile([[self[x][y]+other[x][y] for y in range(self.cols)] for x in range(self.rows)], rows=self.rows, cols=self.cols)
 
     def check_over_flow(self):
         for i, row in enumerate(self.table):
