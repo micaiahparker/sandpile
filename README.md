@@ -39,3 +39,7 @@ For development be sure to install `pytest`.
 ## Requirements
 
 * Python 3.3+
+
+## TODO
+
+Add algorithm for finding the identity of a set of grids.
